@@ -13,6 +13,7 @@ function loop() {
   height = canvas.height = window.innerHeight;
 
   ctx.font = `bold ${Math.min(width / 5, height / 2)}px monospace`;
+  ctx.textBaseline = "middle";
 
   ctx.textAlign = "right";
   ctx.fillStyle = "green";
