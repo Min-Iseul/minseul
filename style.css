@@ -2,8 +2,9 @@
   --orange: #c78855;
 }
 
-html {
+* {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
