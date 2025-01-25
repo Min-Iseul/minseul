@@ -24,6 +24,7 @@ function init() {
   });
 
   setInterval(() => {
+    if (images[0] == undefined) return;
     let img = images.shift();
     img.x = Math.random();
     img.y = Math.random();
@@ -61,7 +62,16 @@ function loop() {
   for (let i = 0; i < images.length; i++) {
     let image = images[i];
 
-    ctx.drawImage(image.image, image.x * width - image.image.width / 2, image.y * height - image.image.height / 2);
+    let imageWidth = image.image.width;
+    let imageHeight = image.image.height;
+    let aspectRatio = imageWidth / imageHeight;
+
+    imageHeight = height * 0.7;
+    imageWidth = aspectRatio * imageHeight;
+
+    console.log(imageWidth, imageHeight);
+
+    ctx.drawImage(image.image, image.x * width - imageWidth / 2, image.y * height - imageHeight / 2, imageWidth, imageHeight);
   }
 
   drawFlakes();
@@ -71,7 +81,6 @@ function loop() {
 }
 
 function drawFlakes() {
-
   for (var i = 0; i < flakeCount; i++) {
     var flake = flakes[i],
       x = mX,
